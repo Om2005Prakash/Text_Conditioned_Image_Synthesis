@@ -1,17 +1,20 @@
-# Text Conditioned Image Synthesis using Latent Diffusion Models (LDM)
+# Text-Conditioned Image Synthesis with Latent Diffusion Models (LDM)
 
-This project demonstrates how to train a text-conditioned Latent Diffusion Model (LDM) using the [CelebA-Dialog](https://github.com/ziqihuangg/CelebA-Dialog) dataset. For a detailed explanation of methodology, training setup, and results, see: 📄 [Report (PDF)](LDM_final.pdf)
+This project demonstrates how to train a **text-conditioned Latent Diffusion Model (LDM)** on the [CelebA-Dialog](https://github.com/ziqihuangg/CelebA-Dialog) dataset. It uses pretrained encoders and a custom diffusion model to generate face images conditioned on natural language descriptions.
+
+For a detailed explanation of the methodology, training setup, and results, check out the full report:  
+📄 [Read the Report (PDF)](LDM_final.pdf)
 
 ---
 
 ## Results
 
-# Sample Latent and corresponding Reconstruction:
+### Latents and Reconstructions
 
 <table>
   <tr>
-    <td align="center"><b>Latents</b></td>
-    <td align="center"><b>Reconstruction</b></td>
+    <td align="center"><b>Latent Representation</b></td>
+    <td align="center"><b>Reconstructed Image</b></td>
   </tr>
   <tr>
     <td><img src="./Latent.png" width="500"/></td>
@@ -21,22 +24,30 @@ This project demonstrates how to train a text-conditioned Latent Diffusion Model
 
 ---
 
-# Text-Conditioned Generation
+### Text-Conditioned Generation
 
-Given a prompt, the LDM generates images by denoising in the latent space and decoding through the VAE.
+The model generates images by denoising in the latent space based on a text prompt and decoding through a pretrained VAE.
 
-<img src="./example.png" width="800"/>
-
-## Model
-
-- **Encoder:** Pretrained CompVis/stable-diffusion-v1-4
-- **Text Encoder:** Pretrained CLIP (openai/clip-vit-large-patch14)
-- **Diffusion Model:** Trained
+<p align="center">
+  <img src="./example.png" width="800"/>
+</p>
 
 ---
 
-## 📦 Processed Stuff
-- Preprocessed images and captions from CelebA-Dialog are used for training
-- 👉 [Kaggle Dataset](https://huggingface.co/datasets/Om2005Prakash/CelebA_Dialogue_Precomputed/tree/main)
-- Precomputed latents and tokenized captions are hosted here (This will save a LOT of time):
+## Model Components
+
+- **Latent Encoder (VAE):** Pretrained `CompVis/stable-diffusion-v1-4`
+- **Text Encoder:** Pretrained CLIP (`openai/clip-vit-large-patch14`)
+- **Diffusion Model:** Trained from scratch on CelebA-Dialog latents and captions
+
+---
+
+## 📦 Preprocessed Data
+
+To speed up training and evaluation, you can use our preprocessed datasets:
+
+- Aligned and captioned images from CelebA-Dialog  
+  👉 [Kaggle Dataset](https://huggingface.co/datasets/Om2005Prakash/CelebA_Dialogue_Precomputed/tree/main)
+
+- Precomputed latents and tokenized captions  
   👉 [Hugging Face Dataset](https://huggingface.co/datasets/Om2005Prakash/CelebA_Dialogue_Precomputed/tree/main)
